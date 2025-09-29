@@ -5,66 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: calleaum <calleaum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/26 11:18:09 by calleaum          #+#    #+#             */
-/*   Updated: 2025/09/08 11:03:25 by calleaum         ###   ########.fr       */
+/*   Created: 2025/09/03 16:48:21 by calleaum          #+#    #+#             */
+/*   Updated: 2025/09/04 09:54:14 by calleaum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "Form.hpp"
-#include "Bureaucrat.hpp"
+#include "iter.hpp"
 
 int main()
 {
-    std::cout << "\033[32m\n*-* Test 1: Valid Form creation *-*\033[0m" << std::endl;
-    Form ouiForm("OuiForm", 50, 25, false);
-    std::cout << ouiForm << std::endl;
+	int			intArr[] = {42, 84, 168, 256, 512};
+	std::string strArr[] = {"I", "tested", "my", "code", "and", "it", "works", "fine", "!"};
+	float		floatArr[] = {4.58f, 5.441f, 8.154f, -5.54f, 1.111f, 1.154f};
 
-	std::cout << "\033[32m\n*-* Test 2: Bureaucrat Oui signs the form (success) *-*\033[0m" << std::endl;
-	Bureaucrat Oui("Oui", 30);
-	std::cout << "Before signing:" << std::endl;
-	std::cout << ouiForm << std::endl;
-	Oui.signForm(ouiForm);
+	iter(intArr, 5, print);
 	std::cout << std::endl;
-	std::cout << "After signing:" << std::endl;
-	std::cout << ouiForm << std::endl;
-	
-    std::cout << "\033[32m\n*-* Test 3: Bureaucrat Non too low to sign *-*\033[0m" << std::endl;
-	Bureaucrat Non("Non", 60);
-	Form nonForm("NonForm", 50, 20, false);
-	std::cout << nonForm << std::endl;
-	Non.signForm(nonForm);
+	std::cout << std::endl;
 
-    std::cout << "\033[32m\n*-* Test 4: Invalid Form creation (sign grade too high) *-*\033[0m" << std::endl;
-    try
-    {
-        Form illegalForm("IllegalForm", 0, 20, false);
-    }
-    catch (const std::exception &e)
-    {
-        std::cerr << "Caught exception: " << e.what() << std::endl;
-    }
+	iter(strArr, 9, print);
+	std::cout << std::endl;
+	std::cout << std::endl;
 
-    std::cout << "\033[32m\n*-* Test 5: Invalid Form creation (exec grade too low) *-*\033[0m" << std::endl;
-    try
-    {
-        Form illegalForm("IllegalForm", 50, 151, false);
-    }
-    catch (const std::exception &e)
-    {
-        std::cerr << "Caught exception: " << e.what() << std::endl;
-    }
-
-    std::cout << "\033[32m\n*-* Test 6: Copy constructor and assignment operator *-*\033[0m" << std::endl;
-    Form original("OriginalForm", 42, 24, true);
-
-    Form copy = original;
-    std::cout << "Copy (via copy constructor):\n" << copy << std::endl;
-
-    Form assigned("AssignedForm", 100, 100, false);
-    assigned = original;
-    std::cout << "Assigned (via operator=):\n" << assigned << std::endl;
-
-    return 0;
+	iter(floatArr, 6, print);
+	std::cout << std::endl;
 }
-

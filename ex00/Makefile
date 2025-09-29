@@ -6,16 +6,16 @@
 #    By: calleaum <calleaum@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/07 08:37:36 by calleaum          #+#    #+#              #
-#    Updated: 2025/08/26 11:27:48 by calleaum         ###   ########.fr        #
+#    Updated: 2025/09/03 16:43:49 by calleaum         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    = Bureaucrat
+NAME    = template
 
 CXX     = c++
 CXXFLAGS= -Wall -Wextra -Werror -std=c++98 -Iinclude
 
-SRC     = src/Bureaucrat.cpp src/main.cpp
+SRC     = src/main.cpp
 OBJ     = $(SRC:.cpp=.o)
 
 all: $(NAME)

@@ -5,87 +5,53 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: calleaum <calleaum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/26 16:23:26 by calleaum          #+#    #+#             */
-/*   Updated: 2025/09/08 10:44:52 by calleaum         ###   ########.fr       */
+/*   Created: 2025/09/03 16:48:18 by calleaum          #+#    #+#             */
+/*   Updated: 2025/09/04 10:11:29 by calleaum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cstdlib>
-#include <ctime>
-#include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "Array.hpp"
+#include "Array.tpp"
 
 int main()
 {
-	std::cout << "\033[32m\n*-* Testing ShrubberyCreationForm *-*\033[0m" << std::endl;
 	try
 	{
-		Bureaucrat Oui("Oui", 130); // can sign & execute
-		ShrubberyCreationForm shrub("yes");
+		std::cout << "--- Default constructor ---" << std::endl;
+		Array<int> emptyArr;
+		std::cout << "Size of emptyArr: " << emptyArr.size() << std::endl;
 
-		Oui.signForm(shrub);
-		Oui.executeForm(shrub);
+		std::cout << "\n--- Constructor with size ---" << std::endl;
+		Array<std::string> strArr(3);
+		strArr[0] = "Pwet";
+		strArr[1] = "Pouet";
+		strArr[2] = "Pweet !";
+
+		for (unsigned int i = 0; i < strArr.size(); ++i)
+			std::cout << strArr[i] << std::endl;
+
+		std::cout << "\n--- Copy constructor ---" << std::endl;
+		Array<std::string> copyArr(strArr);
+		copyArr[1] = "Copy !";
+		for (unsigned int i = 0; i < copyArr.size(); ++i)
+			std::cout << "copyArr[" << i << "] = " << copyArr[i] << std::endl;
+
+		std::cout << "\n--- Original array after copy modified ---" << std::endl;
+		for (unsigned int i = 0; i < strArr.size(); ++i)
+			std::cout << "strArr[" << i << "] = " << strArr[i] << std::endl;
+
+		std::cout << "\n--- Assignment operator ---" << std::endl;
+		Array<std::string> assignArr;
+		assignArr = strArr;
+		assignArr[0] = "Assigned !";
+		for (unsigned int i = 0; i < assignArr.size(); ++i)
+			std::cout << "assignArr[" << i << "] = " << assignArr[i] << std::endl;
+
+		std::cout << "\n--- Access out of bounds ---" << std::endl;
+		std::cout << strArr[42] << std::endl;
 	}
 	catch (const std::exception &e)
 	{
-		std::cerr << " Error: " << e.what() << std::endl;
+		std::cerr << "Caught exception: " << e.what() << std::endl;
 	}
-
-	std::cout << "\033[32m\n*-* Testing RobotomyRequestForm *-*\033[0m" << std::endl;
-	try
-	{
-		Bureaucrat Aguy("A guy", 45);
-		RobotomyRequestForm robot("OUI");
-
-		Aguy.signForm(robot);
-		for (int i = 0; i < 3; ++i)
-			Aguy.executeForm(robot);
-	} catch (const std::exception &e)
-	{
-		std::cerr << " Error: " << e.what() << std::endl;
-	}
-
-	std::cout << "\033[32m\n*-* Testing PresidentialPardonForm *-*\033[0m" << std::endl;
-	try
-	{
-		Bureaucrat Random("Random", 1);
-		PresidentialPardonForm pardon("Guy");
-
-		Random.signForm(pardon);
-		Random.executeForm(pardon);
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << " Error: " << e.what() << std::endl;
-	}
-
-	std::cout << "\033[32m\n*-* Testing form not signed *-*\033[0m" << std::endl;
-	try
-	{
-		Bureaucrat NON("NON", 1);
-		PresidentialPardonForm unsignedForm("Nobody");
-		NON.executeForm(unsignedForm);
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << " Error: " << e.what() << std::endl;
-	}
-
-	std::cout << "\033[32m\n*-* Testing insufficient execution grade *-*\033[0m" << std::endl;
-	try
-	{
-		Bureaucrat Head("Head", 150);
-		ShrubberyCreationForm shrub("bang");
-
-		Head.signForm(shrub);       // allowed
-		Head.executeForm(shrub);    // should fail
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << " Error: " << e.what() << std::endl;
-	}
-
-	return 0;
 }

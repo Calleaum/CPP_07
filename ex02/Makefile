@@ -6,16 +6,16 @@
 #    By: calleaum <calleaum@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/07 08:37:36 by calleaum          #+#    #+#              #
-#    Updated: 2025/08/28 11:11:44 by calleaum         ###   ########.fr        #
+#    Updated: 2025/09/03 17:32:22 by calleaum         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    = Forms
+NAME    = Array
 
 CXX     = c++
 CXXFLAGS= -Wall -Wextra -Werror -std=c++98 -Iinclude
 
-SRC     = src/Bureaucrat.cpp src/main.cpp src/AForm.cpp src/PresidentialPardonForm.cpp src/RobotomyRequestForm.cpp src/ShrubberyCreationForm.cpp
+SRC     = src/main.cpp
 OBJ     = $(SRC:.cpp=.o)
 
 all: $(NAME)

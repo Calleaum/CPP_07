@@ -6,16 +6,16 @@
 #    By: calleaum <calleaum@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/07 08:37:36 by calleaum          #+#    #+#              #
-#    Updated: 2025/08/26 15:09:44 by calleaum         ###   ########.fr        #
+#    Updated: 2025/09/03 17:03:10 by calleaum         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    = Form
+NAME    = iter
 
 CXX     = c++
 CXXFLAGS= -Wall -Wextra -Werror -std=c++98 -Iinclude
 
-SRC     = src/Bureaucrat.cpp src/main.cpp src/Form.cpp
+SRC     = src/main.cpp
 OBJ     = $(SRC:.cpp=.o)
 
 all: $(NAME)
